@@ -1,3 +1,4 @@
+require 'capistrano/version'
 require "./config/deploy_hosts"
 
 require 'bundler/capistrano' # adds bundle:install step to deploy pipeline
