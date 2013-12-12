@@ -11,7 +11,7 @@ case "$1" in
       --quiet \
       --background \
       --pidfile "$PIDFILE"
-      --chuid stack:stack
+      --chuid stack:stack \
       --chdir "$WORKER_DIR" \
       --exec "QUEUES='${queues}' VERBOSE=1 bundle exec rake resque:work"
     # rm -f $PIDFILE
