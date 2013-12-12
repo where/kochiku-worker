@@ -26,6 +26,7 @@ case "$1" in
      --signal QUIT \
      --chdir "WORKER_DIR" \
      --retry 4
+  ;;
   restart)
     $0 stop
     $0 start
