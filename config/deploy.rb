@@ -11,7 +11,7 @@ set :branch, "master"
 set :scm, :git
 
 set :user, "kochiku"
-set :deploy_to, "~/kochiku-worker"
+set :deploy_to, "/app/kochiku-worker"
 set :deploy_via, :remote_cache
 set :keep_releases, 5
 set :use_sudo, false
