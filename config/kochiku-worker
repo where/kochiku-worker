@@ -12,7 +12,7 @@ case "$1" in
       --pidfile "$PIDFILE" \
       --chuid stack:stack \
       --chdir "$WORKER_DIR" \
-      --exec "$RVM default do bundle exec rake resque:work QUEUES='${queues}' VERBOSE=1"
+      --exec "$RVM" -- default do bundle exec rake resque:work QUEUES="${QUEUES}" VERBOSE=1
   ;;
   stop)
     start-stop-daemon --stop \
