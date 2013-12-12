@@ -4,8 +4,6 @@ PIDFILE=/app/kochiku-worker/shared/pids/kochiku-worker.pid
 QUEUES=ci,developer
 RVM=/home/stack/.rvm/bin/rvm
 
-Cd $WORKER_DIR
-
 case "$1" in
   start)
     start-stop-daemon --start \
