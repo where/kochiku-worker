@@ -14,9 +14,6 @@ case "$1" in
       --chuid stack:stack \
       --chdir "$WORKER_DIR" \
       --exec "bundle" -- "exec rake resque:work QUEUES='${queues}' VERBOSE=1"
-    # rm -f $PIDFILE
-    # su -l stack -c 'cd '$WORKER_DIR' && QUEUES='${queues}' VERBOSE=1 bundle exec rake resque:work </dev/null & >> '$WORKER_DIR'/log/resque.log 2>&1 &'
-    # touch
   ;;
   stop)
     start-stop-daemon --stop \
