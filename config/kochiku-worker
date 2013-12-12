@@ -8,19 +8,18 @@ cd $WORKER_DIR
 case "$1" in
   start)
     rm -f $PIDFILE
-    echo "starting worker from $(pwd)"
-    su -l stack -c 'cd '$WORKER_DIR' && QUEUES='${queues:-"*"}' VERBOSE=1 bundle exec rake resque:work </dev/null >> '$WORKER_DIR'/log/resque.log 2>&1 &'
+    su -l stack -c 'cd '$WORKER_DIR' && QUEUES='${queues}' VERBOSE=1 bundle exec rake resque:work </dev/null & >> '$WORKER_DIR'/log/resque.log 2>&1 &'
   ;;
   stop)
-    kill -s QUIT $(cat $PIDFILE) && rm -f $PIDFILE
+    [ -e $PIDFILE ] && kill -s QUIT $(cat $PIDFILE) && rm -f $PIDFILE
     exit 0
   ;;
   pause)
-    kill -s USR2 $(cat $PIDFILE)
+    [ -e $PIDFILE ] && kill -s USR2 $(cat $PIDFILE)
     exit 0
   ;;
   cont)
-    kill -s CONT $(cat $PIDFILE)
+    [ -e $PIDFILE ] && kill -s CONT $(cat $PIDFILE)
     exit 0
   ;;
   restart)
