@@ -22,15 +22,6 @@ after "deploy:setup", "kochiku:setup"
 after "deploy:create_symlink", "kochiku:symlinks"
 after "deploy:create_symlink", "kochiku:create_kochiku_worker_yaml"
 
-namespace :deploy do
-  desc "Restart all of the build workers"
-  task :restart, :roles => :worker do
-    # Assumes your workers are monitored by Monit
-    # You may want to redefine this task inside of deploy.custom.rb
-    run 'sudo monit restart kochiku-worker'
-  end
-end
-
 namespace :kochiku do
   task :setup, :roles => :worker  do
     run "gem install bundler -v '~> 1.3' --conservative"

@@ -1,0 +1,34 @@
+#!/bin/bash --login
+WORKER_DIR=/app/kochiku-worker/current
+PIDFILE=/app/kochiku-worker/shared/pids/kochiku-worker.pid
+QUEUES=ci,developer
+RVM=/home/stack/.rvm/bin/rvm
+
+case "$1" in
+  start)
+    start-stop-daemon --start \
+      --quiet \
+      --background \
+      --pidfile "$PIDFILE" \
+      --make-pidfile "$PIDFILE" \
+      --chuid stack:stack \
+      --chdir "$WORKER_DIR" \
+      --exec "$RVM" -- default do bundle exec rake resque:work QUEUES="${QUEUES}" VERBOSE=1
+  ;;
+  stop)
+    start-stop-daemon --stop \
+     --quiet \
+     --pidfile "$PIDFILE" \
+     --signal QUIT \
+     --chdir "WORKER_DIR" \
+     --retry 4
+  ;;
+  restart)
+    $0 stop
+    $0 start
+  ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|pause|cont|status}"
+    exit 1
+esac
+
