@@ -2,9 +2,9 @@
 WORKER_DIR=/app/kochiku-worker/current
 PIDFILE=/app/kochiku-worker/shared/pids/kochiku-worker.pid
 QUEUES=ci,developer
-BUNDLE=/home/stack/.rvm/gems/ruby-2.0.0-p0@global/bin/bundle
+RVM=/home/stack/.rvm/bin/rvm
 
-cd $WORKER_DIR
+Cd $WORKER_DIR
 
 case "$1" in
   start)
@@ -14,7 +14,7 @@ case "$1" in
       --pidfile "$PIDFILE" \
       --chuid stack:stack \
       --chdir "$WORKER_DIR" \
-      --exec "$BUNDLE" -- "exec rake resque:work QUEUES='${queues}' VERBOSE=1"
+      --exec "$RVM" do "bundle exec rake resque:work QUEUES='${queues}' VERBOSE=1"
   ;;
   stop)
     start-stop-daemon --stop \
