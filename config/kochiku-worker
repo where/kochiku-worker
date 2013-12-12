@@ -9,7 +9,7 @@ case "$1" in
     start-stop-daemon --start \
       --quiet \
       --background \
-      --pidfile "$PIDFILE" \
+      --make-pidfile "$PIDFILE" \
       --chuid stack:stack \
       --chdir "$WORKER_DIR" \
       --exec "$RVM" -- default do bundle exec rake resque:work QUEUES="${QUEUES}" VERBOSE=1
