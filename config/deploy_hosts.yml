@@ -8,7 +8,12 @@ redis_host: "kochiku-server-41925.phx-os1.stratus.dev.ebay.com"
 # Change this to the hostnames for the kochiku worker boxes that you want to deploy to
 worker_hosts:
   - kochiku-worker-1-41926.phx-os1.stratus.dev.ebay.com
-# - 10.9.219.190
-# - 10.9.223.68
-# - kochiku-worker-3-122599.phx-os1.stratus.dev.ebay.com
+  - kochiku-worker-3-122599.phx-os1.stratus.dev.ebay.com
+  - 9cm2-122791.phx-os1.stratus.dev.ebay.com
+  - 8cm2-122790.phx-os1.stratus.dev.ebay.com
+  - 7cm2-122789.phx-os1.stratus.dev.ebay.com
+  - 6cm-122788.phx-os1.stratus.dev.ebay.com
+  - 5cm2-122787.phx-os1.stratus.dev.ebay.com
+  - 4cm2-122786.phx-os1.stratus.dev.ebay.com
+  
 
